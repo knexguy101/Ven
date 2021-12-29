@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"VenariBot/requests"
+	"VenariBot/strats"
+	"VenariBot/strats/berryfarm"
+)
 
 func main() {
-	fmt.Println("hey")
+	berryfarm.StartTask(&strats.VenariTask{
+		Client: requests.CreateNewClient(nil),
+	})
 }

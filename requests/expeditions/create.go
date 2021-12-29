@@ -36,13 +36,13 @@ func CreateExpedition(area, baitId string, client *requests.HttpClient) (*Expedi
 	}
 	defer res.Body.Close()
 
-	if res.StatusCode != 200 {
-		return nil, fmt.Errorf("unknown response on csrf: %d", res.StatusCode)
-	}
-
 	resBytes, err = io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	if res.StatusCode != 200 {
+		return nil, fmt.Errorf("unknown response on csrf: %d", res.StatusCode)
 	}
 
 	var expRes ExpeditionResponse

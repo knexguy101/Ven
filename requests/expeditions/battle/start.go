@@ -168,13 +168,15 @@ func StartBattle(expeditionId, venariId, baitId, rigId string, client *requests.
 	}
 	defer res.Body.Close()
 
-	if res.StatusCode != 200 {
-		return nil, fmt.Errorf("unknown response on csrf: %d", res.StatusCode)
-	}
-
 	resBytes, err = io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	//fmt.Println(string(resBytes))
+
+	if res.StatusCode != 200 {
+		return nil, fmt.Errorf("unknown response on csrf: %d", res.StatusCode)
 	}
 
 	var expRes StartBattleResponse
