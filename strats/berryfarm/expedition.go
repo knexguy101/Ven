@@ -20,7 +20,7 @@ func Expedition(vt *strats.VenariTask) string {
 
 	if user.Data.Energy.Amount < 2 {
 		fmt.Println("Energy too low! sleeping...")
-		time.Sleep(30 * time.Second)
+		time.Sleep(2 * time.Minute)
 		return "expedition"
 	}
 
@@ -38,6 +38,7 @@ func Expedition(vt *strats.VenariTask) string {
 		return "expedition"
 	}
 
+	vt.BaitId = ""
 	for _, v := range *currentInv {
 		if v.Item.Name == "Oria" {
 			vt.BaitId = v.ID

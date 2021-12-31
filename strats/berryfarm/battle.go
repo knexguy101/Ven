@@ -18,10 +18,10 @@ func Battle(vt *strats.VenariTask) string {
 
 	fmt.Println(fmt.Sprintf("Started Battle: %s", start.Venari.Name))
 
-	for i := 0; i < 2; i++ {
+	for i := 0; i < 3; i++ {
 
 		fmt.Printf("Fighting [%d]\n", i)
-		play, err := battle.BattleAction(vt.ExpeditionId, vt.BaitId, vt.RigId, battle.Fight, vt.Client)
+		play, err := battle.BattleAction(vt.ExpeditionId, vt.BaitId, vt.RigId, battle.Play, vt.Client)
 		if err != nil {
 			fmt.Println("Error playing")
 			return "battle"
