@@ -39,8 +39,6 @@ func BattleCatch(expeditionId string, client *requests.HttpClient) (*BattleCatch
 		return nil, err
 	}
 
-	fmt.Println(string(resBytes))
-
 	if res.StatusCode != 200 {
 		return nil, fmt.Errorf("unknown response on csrf: %d", res.StatusCode)
 	}

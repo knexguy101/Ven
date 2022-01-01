@@ -16,6 +16,14 @@ const (
 	Feed BattleActionType = "feed"
 )
 
+var (
+	BattleActionList = map[string]BattleActionType {
+		"Play": Play,
+		"Fight": Fight,
+		"Feed": Feed,
+	}
+)
+
 type BattleActionPayload struct {
 	Action BattleActionType `json:"action"`
 	Rig    string `json:"rig"`

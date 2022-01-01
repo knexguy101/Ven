@@ -23,9 +23,15 @@ func NewInterpreter(lines []string) *Interpreter {
 func (i *Interpreter) Parse() error {
 	for _, line := range i.ScriptLines {
 		if line == "" {
+			action, err := i.handleNone()
+			if err != nil {
+				return err
+			}
+			i.InterpreterTask.Actions = append(i.InterpreterTask.Actions, action)
 			continue
 		}
 
+		fmt.Println(line)
 		keyword, args, err := getKeywordAndArgsFromLine(line)
 		if err != nil {
 			return fmt.Errorf("error parsing line: %s %v", line, err)
@@ -48,6 +54,36 @@ func (i *Interpreter) Parse() error {
 			break
 		case NONE:
 			action, err = i.handleNone()
+			break
+		case TIME:
+			action, err = i.handleTime(args)
+			break
+		case ACTION:
+			action, err = i.handleAction(args)
+			break
+		case END:
+			action, err = i.handleEnd()
+			break
+		case EQUALS:
+			action, err = i.handleEquals(args)
+			break
+		case ISEMPTY:
+			action, err = i.handleEmpty(args)
+			break
+		case GREATER:
+			action, err = i.handleGreaterThan(args)
+			break
+		case LESSER:
+			action, err = i.handleLessThan(args)
+			break
+		case GREATEREQUALS:
+			action, err = i.handleGreaterThanOrEquals(args)
+			break
+		case LESSEREQUALS:
+			action, err = i.handleLessThanOrEquals(args)
+			break
+		case ADD:
+			action, err = i.handleAdd(args)
 			break
 		}
 		if err != nil {

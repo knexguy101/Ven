@@ -1,20 +1,31 @@
 package main
 
-import "VenariBot/interpreter"
+import (
+	"VenariBot/interpreter"
+	"bufio"
+	"os"
+)
+
+func readLines(path string) ([]string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+	return lines, scanner.Err()
+}
 
 func main() {
 
-	script := []string {
-		"SET[test,1]",
-		"PRINT[test]",
-		"SLEEP[1000]",
-		"NONE[]",
-		"SET[test2,22]",
-		"PRINT[test2]",
-		"GOTO[0]",
-	}
+	script, err := readLines("./script.ven")
 	i := interpreter.NewInterpreter(script)
-	err := i.Parse()
+	err = i.Parse()
 	if err != nil {
 		panic(err)
 	}
