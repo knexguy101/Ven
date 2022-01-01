@@ -47,7 +47,9 @@ EQUALS[x,y,ACTION(x.y.z),GOTO(1)] //Pair [ , ] and ( . )
 ### Reference
 ##### Set
 Set will create a variable with a value, this variable can then be used in functions
-```SET[x,1]```
+```
+SET[x,1]
+```
 ```
 SET[x,1] //sets x = 1
 SET[x,test] sets x = test
@@ -57,7 +59,9 @@ SET[x,] sets x to empty
 
 ##### Print
 Print will print the given variable name or input to the console
-```PRINT[x]```
+```
+PRINT[x]
+```
 ```
 PRINT[test] //test
 SET[test,1]
@@ -68,7 +72,9 @@ PRINT[test] //1
 ##### Sleep
 Sleep will sleep the execution of the script for the given amount of **Milliseconds**
 **Sleep will only take integer values, not variables**
-```SLEEP[1000]```
+```
+SLEEP[1000]
+```
 ```
 SET[x,1]
 SLEEP[5000] //waits 5 seconds
@@ -78,7 +84,9 @@ PRINT[x]
 
 ##### Time
 Time will set the given variable name to the Current **Unix Seconds**. Calling time on an existing variable name will overwrite it.
-```TIME[x]```
+```
+TIME[x]
+```
 ```
 TIME[x] //sets to the current unix timestamp
 PRINT[x]
@@ -87,7 +95,9 @@ PRINT[x]
 
 ##### Goto
 Goto will set the next line that executes. Setting it to a number lower than 1 or higher than the amount of lines in the script will cause an error
-```GOTO[1]```
+```
+GOTO[1]
+```
 ```
 PRINT[here]
 SLEEP[1000]
@@ -97,7 +107,9 @@ GOTO[1] //goes back to line 1.
 
 ##### End
 End will stop the execution of the script, you cannot restart after calling End.
-```END[]```
+```
+END[]
+```
 ```
 PRINT[1] //1
 PRINT[2] //2
@@ -107,7 +119,9 @@ PRINT[3]
 
 ##### Add
 Add will add a number to the given variable name, if the given variable name is not a number, an error is thrown.
-```ADD[x,1]```
+```
+ADD[x,1]
+```
 ```
 SET[x,1]
 ADD[x,5]
@@ -117,7 +131,9 @@ PRINT[x] //6
 
 ##### Action
 Action is the bread, butter, and the meat of the sandwich, Actions are premade functions that allow you to easily do things on Venari. A List of Actions are provided below.
-```ACTION[actionName,...variables]```
+```
+ACTION[actionName,...variables]
+```
 ```
 SET[energy,] //create energy variable for storage
 ACTION[getUserEnergy,energy] //call getUserEnergy Action
@@ -129,7 +145,9 @@ Actions allow you to call lots of complicated code very easily and simply.
 ##### Equals
 Equals will compare to variables to see if they are equal. It will convert both variables to string then compare. The ifCase is executed if they are equal, otherwise the elseCase is executed.
 
-```EQUALS[x,y,ifCase,elseCase]```
+```
+EQUALS[x,y,ifCase,elseCase]
+```
 ```
 SET[x,1]
 SET[y,2]
@@ -143,7 +161,9 @@ PRINT[y] //2
 ##### None
 None does nothing, literally, its as placeholders for GOTO functions, or when you want to do nothing in a ifCase or elseCase when using comparatives. It is called to help exit comparatives without having to do tedious PRINT/GOTO(s).
 
-```NONE[]```
+```
+NONE[]
+```
 ```
 SET[x,1]
 SET[y,1]
@@ -154,7 +174,9 @@ PRINT[here] //here
 
 ##### IsEmpty
 Checks if the given variable is empty
-```ISEMPTY[x,ifCase,elseCase]```
+```
+ISEMPTY[x,ifCase,elseCase]
+```
 ```
 SET[x,]
 ISEMPTY[x,PRINT(empty),PRINT(not empty)] //empty
@@ -163,19 +185,29 @@ ISEMPTY[x,PRINT(empty),PRINT(not empty)] //empty
 
 ##### GREATER, LESSER, GREATEREQUALS, LESSEREQUALS
 Greater: checks if x is greater than y
-```GREATER[x,y,ifCase,elseCase]```
+```
+GREATER[x,y,ifCase,elseCase]
+```
 Lesser: checks if x is less than y
-```LESSER[x,y,ifCase,elseCase]```
+```
+LESSER[x,y,ifCase,elseCase]
+```
 GreaterEquals: checks if x is greater than or equal to y
-```GREATEREQUALS[x,y,ifCase,elseCase]```
+```
+GREATEREQUALS[x,y,ifCase,elseCase]
+```
 LesserEquals: checks if x is less than or equal to y
-```LESSEREQUALS[x,y,ifCase,elseCase]```
+```
+LESSEREQUALS[x,y,ifCase,elseCase]
+```
 
 
 ------------
 ### Actions
 Here is a list of all possible actions, please remember to use the formatting below when calling them.
-```ACTION[actionName,variables of the action]```
+```
+ACTION[actionName,variables of the action]
+```
 
 *Follow the example when using actions*
 ```
