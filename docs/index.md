@@ -236,4 +236,5 @@ PRINT[energy]
 - `battleCatch[expeditionId,resVar]` Attempts a catch, returns the amount of coins or 0 depending if caught
 
 ##### Shop
+- `getItemByName[city,itemName,resVar]` Gets the ID if any item's match itemName
 - `buyItem[itemId,amount,resVar]` Buys the listed amount of the item ID.
