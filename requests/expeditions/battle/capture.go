@@ -1,7 +1,7 @@
 package battle
 
 import (
-	"VenariBot/requests"
+	"Ven/requests"
 	"encoding/json"
 	"fmt"
 	"io"

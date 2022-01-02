@@ -31,7 +31,6 @@ func (i *Interpreter) Parse() error {
 			continue
 		}
 
-		fmt.Println(line)
 		keyword, args, err := getKeywordAndArgsFromLine(line)
 		if err != nil {
 			return fmt.Errorf("error parsing line: %s %v", line, err)

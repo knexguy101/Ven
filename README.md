@@ -1,2 +1,2 @@
-# VenariBot
-VenariBot is a project that uses a custom script language called VEN to automate catching/farming Venari.
+# Ven
+Ven is a custom script language used to automate catching/farming Venari.

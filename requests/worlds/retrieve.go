@@ -1,7 +1,7 @@
 package worlds
 
 import (
-	"VenariBot/requests"
+	"Ven/requests"
 	"encoding/json"
 	"fmt"
 	"io"

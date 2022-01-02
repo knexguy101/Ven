@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/VenariBot.iml" filepath="$PROJECT_DIR$/.idea/VenariBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Ven.iml" filepath="$PROJECT_DIR$/.idea/Ven.iml" />
     </modules>
   </component>
 </project>

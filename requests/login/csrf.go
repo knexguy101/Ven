@@ -1,7 +1,7 @@
 package login
 
 import (
-	"VenariBot/requests"
+	"Ven/requests"
 	"fmt"
 	"net/http"
 )

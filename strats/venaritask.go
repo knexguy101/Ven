@@ -1,8 +1,8 @@
 package strats
 
 import (
-	"VenariBot/requests"
-	"VenariBot/requests/login"
+	"Ven/requests"
+	"Ven/requests/login"
 	"fmt"
 )
 

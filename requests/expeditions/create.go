@@ -1,7 +1,7 @@
 package expeditions
 
 import (
-	"VenariBot/requests"
+	"Ven/requests"
 	"bytes"
 	"encoding/json"
 	"fmt"

@@ -1,7 +1,7 @@
 package webhooks
 
 import (
-	"VenariBot/requests/expeditions/battle"
+	"Ven/requests/expeditions/battle"
 	"github.com/DisgoOrg/disgo/discord"
 	"github.com/DisgoOrg/disgo/webhook"
 	"strconv"

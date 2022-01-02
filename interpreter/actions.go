@@ -1,11 +1,11 @@
 package interpreter
 
 import (
-	"VenariBot/requests/expeditions"
-	"VenariBot/requests/expeditions/battle"
-	"VenariBot/requests/inventory"
-	"VenariBot/requests/user"
-	"VenariBot/strats"
+	"Ven/requests/expeditions"
+	"Ven/requests/expeditions/battle"
+	"Ven/requests/inventory"
+	"Ven/requests/user"
+	"Ven/strats"
 	"errors"
 	"strconv"
 	"strings"
@@ -24,6 +24,7 @@ var (
 		"battleAction": battleAction,
 		"battleCatch": battleCatch,
 		"buyItem": buyItem,
+		"getItemByName": getItemByName,
 	}
 	InvalidArgs = errors.New("invalid args")
 	InvalidArgType = errors.New("invalid args type")
@@ -464,6 +465,49 @@ func battleCatch(vm *InterpreterTask, t *strats.VenariTask, args []string) error
 //    SHOP    //
 //			  //
 ////////////////
+
+// getItemByName[city,itemName,resVar]
+func getItemByName(vm *InterpreterTask, t *strats.VenariTask, args []string) error {
+	if len(args) <= 2 {
+		return InvalidArgs
+	}
+
+	vm.SetValue(args[2], "")
+
+	city, err := vm.GetValue(args[0])
+	if err != nil {
+		return err
+	}
+
+	cityStr, ok := city.(string)
+	if !ok {
+		return InvalidArgType
+	}
+
+	name, err := vm.GetValue(args[1])
+	if err != nil {
+		return err
+	}
+
+	nameStr, ok := name.(string)
+	if !ok {
+		return InvalidArgType
+	}
+
+	items, err := user.GetStock(cityStr, t.Client)
+	if err != nil {
+		return err
+	}
+
+	for _, v := range *items {
+		if v.Item.Name == nameStr {
+			vm.SetValue(args[2], v.ID)
+			break
+		}
+	}
+
+	return nil
+}
 
 // buyItem[itemId,amount,resVar]
 func buyItem(vm *InterpreterTask, t *strats.VenariTask, args []string) error {

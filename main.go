@@ -1,8 +1,9 @@
 package main
 
 import (
-	"VenariBot/interpreter"
+	"Ven/interpreter"
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -22,41 +23,41 @@ func readLines(path string) ([]string, error) {
 }
 
 func main() {
+	argsWithoutProg := os.Args[1:]
 
-	script, err := readLines("./script.ven")
-	i := interpreter.NewInterpreter(script)
-	err = i.Parse()
-	if err != nil {
-		panic(err)
+	if len(argsWithoutProg) < 2 {
+		fmt.Println("Not enough args, try:\nven run\nven build")
+		return
 	}
 
-	err = i.InterpreterTask.Run()
+	fileData, err := readLines(argsWithoutProg[1])
 	if err != nil {
-		panic(err)
+		fmt.Println("Could not find .ven file")
+		return
 	}
 
-	/*myApp := app.New()
-	myWindow := myApp.NewWindow("TabContainer Widget")
-	myWindow.Resize(fyne.Size{
-		Width: 650,
-		Height: 600,
-	})
+	i := interpreter.NewInterpreter(fileData)
 
-	events := container.NewVBox()
-	farmers := container.NewVBox()
-	accounts := container.NewVBox()
-	scripts := container.NewVBox()
-	settings := container.NewVBox()
+	switch argsWithoutProg[0] {
+	case "run":
+		err := i.Parse()
+		if err != nil {
+			fmt.Println(err)
+			return
+		} else {
+			fmt.Println("Ven script built successfully")
+		}
 
-	tabs := container.NewAppTabs(
-		container.NewTabItem("Farmers", farmers),
-		container.NewTabItem("Accounts", accounts),
-		container.NewTabItem("Scripts", scripts),
-		container.NewTabItem("Events", events),
-		container.NewTabItem("Settings", settings),
-	)
-	tabs.SetTabLocation(container.TabLocationTop)
-
-	myWindow.SetContent(tabs)
-	myWindow.ShowAndRun()*/
+		err = i.InterpreterTask.Run()
+		if err != nil {
+			fmt.Println(err)
+		}
+	case "build":
+		err := i.Parse()
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println("Ven script built successfully")
+		}
+	}
 }

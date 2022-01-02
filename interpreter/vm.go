@@ -1,8 +1,8 @@
 package interpreter
 
 import (
-	"VenariBot/requests"
-	"VenariBot/strats"
+	"Ven/requests"
+	"Ven/strats"
 	"errors"
 	"fmt"
 	"strconv"

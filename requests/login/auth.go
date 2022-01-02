@@ -1,7 +1,7 @@
 package login
 
 import (
-	"VenariBot/requests"
+	"Ven/requests"
 	"bytes"
 	"encoding/json"
 	"fmt"
