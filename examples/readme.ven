@@ -1,0 +1,31 @@
+PRINT[you should read the documentation: https://knexguy101.github.io/Ven/]
+
+SET[x,1]
+PRINT[x]
+
+ADD[x,2]
+PRINT[x]
+ADD[x,-2]
+PRINT[x]
+
+PRINT[Sleeping...]
+SLEEP[1000]
+
+TIME[x]
+PRINT[x]
+
+SET[x,0]
+SET[y,1]
+->IAmATag
+EQUALS[x,y,GOTO(NextTag),NONE()]
+PRINT[Setting x = 1]
+SET[x,1]
+GOTO[IAmATag]
+->NextTag
+PRINT[Exited loop]
+
+SET[y,0]
+GREATER[x,y,PRINT(x is greater than y),PRINT(y is greater than x)]
+
+END[]
+PRINT[Went past END]

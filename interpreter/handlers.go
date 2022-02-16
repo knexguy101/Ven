@@ -106,7 +106,7 @@ func (i *Interpreter) handleGoto(args Args) (func() error, error) {
 				return errors.New("could not convert arg to number: " + args[0])
 			}
 		} else {
-			index = tagIndex
+			index = tagIndex + 1
 		}
 		index = index - 1
 
