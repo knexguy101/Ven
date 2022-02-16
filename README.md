@@ -2,7 +2,7 @@
 
 ## Ven [Documentation](https://knexguy101.github.io/Ven/)
 
-Ven is a scripting language that allows users to easily automate the Venari game without touching http or web based code. Ven takes inspiration from Assembly in terms of structuring, and allows users to do difficult or complex tasks with prebuilt `Actions`
+Ven is a scripting language that allows users to easily automate the [Venari](https://app.legendsofvenari.com/expedition) game without touching http or web based code. Ven takes inspiration from Assembly in terms of structuring, and allows users to do difficult or complex tasks with prebuilt `Actions`
 
 ### Quickstart
 1. Download the latest release of Ven from our [releases](https://github.com/knexguy101/Ven/releases) section
