@@ -1,0 +1,8 @@
+SLEEP[1000]
+
+->Test
+
+PRINT[hey]
+SLEEP[3000]
+
+GOTO[Test]

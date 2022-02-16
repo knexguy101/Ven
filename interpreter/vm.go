@@ -14,6 +14,7 @@ type InterpreterTask struct {
 	CurrentAction int
 	LastWasGoto bool
 	Storage map[string]*InterpreterValue
+	TagStorage map[string]int
 }
 
 func (it *InterpreterTask) Run() error {
@@ -69,6 +70,18 @@ func (it *InterpreterTask) SetValue(key string, value interface{}) {
 	it.Storage[key] = &InterpreterValue {
 		Value: value,
 	}
+}
+
+func (it *InterpreterTask) GetTagValue(key string) (int, error) {
+	if val, ok := it.TagStorage[key]; !ok {
+		return 0, errors.New("variable does not exist")
+	} else {
+		return val, nil
+	}
+}
+
+func (it *InterpreterTask) SetTagValue(key string, val int) {
+	it.TagStorage[key] = val
 }
 
 type InterpreterValue struct {

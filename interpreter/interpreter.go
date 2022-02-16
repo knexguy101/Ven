@@ -2,6 +2,7 @@ package interpreter
 
 import (
 	"fmt"
+	"strings"
 )
 
 type Interpreter struct {
@@ -16,18 +17,27 @@ func NewInterpreter(lines []string) *Interpreter {
 			CurrentAction: 0,
 			LastWasGoto: false,
 			Storage: make(map[string]*InterpreterValue),
+			TagStorage: make(map[string]int),
 		},
 	}
 }
 
 func (i *Interpreter) Parse() error {
-	for _, line := range i.ScriptLines {
+	for k, line := range i.ScriptLines {
 		if line == "" {
 			action, err := i.handleNone()
 			if err != nil {
 				return err
 			}
 			i.InterpreterTask.Actions = append(i.InterpreterTask.Actions, action)
+			continue
+		} else if strings.HasPrefix(line, "->") {
+			action, err := i.handleNone()
+			if err != nil {
+				return err
+			}
+			i.InterpreterTask.Actions = append(i.InterpreterTask.Actions, action)
+			i.InterpreterTask.SetTagValue(strings.ReplaceAll(line, "->", ""), k)
 			continue
 		}
 

@@ -99,24 +99,14 @@ func (i *Interpreter) handleGoto(args Args) (func() error, error) {
 
 		var index int
 
-		name, err := i.InterpreterTask.GetValue(args[0])
+		tagIndex, err := i.InterpreterTask.GetTagValue(args[0])
 		if err != nil {
 			index, err = strconv.Atoi(args[0])
 			if err != nil {
 				return errors.New("could not convert arg to number: " + args[0])
 			}
 		} else {
-			switch name.(type) {
-			case int64:
-				index = int(name.(int64))
-			case int:
-				index = name.(int)
-			case string:
-				index, err = strconv.Atoi(name.(string))
-				if err != nil {
-					return errors.New("could not convert arg to number: " + args[0])
-				}
-			}
+			index = tagIndex
 		}
 		index = index - 1
 
