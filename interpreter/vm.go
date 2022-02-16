@@ -28,7 +28,7 @@ func (it *InterpreterTask) Run() error {
 	it.Task = &strats.VenariTask {
 		Client: requests.CreateNewClient(nil),
 	}
-	//it.Task.Login("")
+	it.Task.Login("")
 
 	it.CurrentAction = 0
 

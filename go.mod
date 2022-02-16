@@ -3,7 +3,7 @@ module Ven
 go 1.16
 
 require (
-	fyne.io/fyne/v2 v2.1.2
 	github.com/DisgoOrg/disgo v0.6.8
-	github.com/sqweek/dialog v0.0.0-20211002065838-9a201b55ab91
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/gofiber/fiber/v2 v2.27.0
 )
