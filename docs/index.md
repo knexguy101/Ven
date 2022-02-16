@@ -103,6 +103,14 @@ PRINT[here]
 SLEEP[1000]
 GOTO[1] //goes back to line 1.
 ```
+We can also use Tags in order to avoid counting out lines.
+Define a tag with the `->` prefix and the tag name directly following it (without spacing).
+```
+->TagName
+PRINT[here]
+SLEEP[1000]
+GOTO[TagName]
+```
 
 
 ##### End
